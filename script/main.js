@@ -19,11 +19,16 @@ const fetchData = () => {
         // Run amimation if so
         if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
           animationTimeline();
-        } 
+          playBackgroundMusic();
+        }
       });
     });
 };
-
+const playBackgroundMusic = () => {
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    backgroundMusic.volume = 0.5; // Set volume to 50%
+    backgroundMusic.play();
+};
 // Animation Timeline
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
@@ -220,6 +225,7 @@ const animationTimeline = () => {
       },
       "-=2"
     )
+    .call(playBackgroundMusic)
     .from(".hat", 0.5, {
       x: -100,
       y: 350,
